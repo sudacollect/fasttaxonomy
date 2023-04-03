@@ -25,7 +25,6 @@ class TermController extends AdminController
 
     
     public $taxonomy_name = '';
-    public $redirect_url = '';
 
     function __construct()
     {
@@ -47,19 +46,18 @@ class TermController extends AdminController
         
         $taxonomyObj = new Taxonomy;
         $categories = $taxonomyObj->lists($this->taxonomy_name);
-
+        
         $this->setData('categories',$categories);
         
-        // $this->getButtonConfig();
 
-        $buttons = (array)$this->buttonConfig();
-        $buttons['create'] = 'extension/fasttaxonomy/taxonomy/term/add/'.$this->taxonomy_name;
+        $buttons = $this->actionConfig();
+        $buttons['create'] = admin_url('extension/fasttaxonomy/taxonomy/term/add/'.$this->taxonomy_name);
 
         $this->setData('buttons',$buttons);
 
         $this->title('分类管理');
 
-        return $this->display($this->getViewConfig('list'));
+        return $this->display($this->getViews('list'));
     }
 
     //新建分类
@@ -81,30 +79,35 @@ class TermController extends AdminController
         $this->setData('taxonomy_name',$taxonomy_name);
         $this->setData('parent_id',$parent_id);
         
-        $this->getButtonConfig();
-        return $this->display($this->getViewConfig('create'));
+        $this->getActions();
+        return $this->display($this->getViews('create'));
     }
 
-    public function viewConfig(){
+    public function viewConfig(): array
+    {
 
         return [
 
-            'list'=>'view_suda::taxonomy.category.list',
-            'create'=>'view_suda::taxonomy.category.add',
-            'update'=>'view_suda::taxonomy.category.edit',
+            'list'  => 'view_suda::taxonomy.category.list',
+            'create'=> 'view_suda::taxonomy.category.add',
+            'update'=> 'view_suda::taxonomy.category.edit',
         ];
 
     }
 
-    public function buttonConfig(){
+    public function actionConfig(): array
+    {
 
         $buttons = [];
     
-        $buttons['create']  = 'extension/fasttaxonomy/taxonomy/term/add';
-        $buttons['update']  = 'extension/fasttaxonomy/taxonomy/term/update';
-        $buttons['save']    = 'extension/fasttaxonomy/taxonomy/term/save';
-        $buttons['delete']  = 'extension/fasttaxonomy/taxonomy/term/delete';
-        $buttons['sort']    = 'extension/fasttaxonomy/taxonomy/term/editsort';
+        $buttons['create']  = admin_url('extension/fasttaxonomy/taxonomy/term/add');
+        $buttons['update']  = admin_url('extension/fasttaxonomy/taxonomy/term/update');
+        $buttons['save']    = admin_url('extension/fasttaxonomy/taxonomy/term/save');
+        $buttons['delete']  = admin_url('extension/fasttaxonomy/taxonomy/term/delete');
+        $buttons['sort']    = admin_url('extension/fasttaxonomy/taxonomy/term/editsort');
+
+        $buttons['modal_url']  = admin_url('medias/modal');
+        $buttons['upload_url'] = admin_url('medias/upload/image');
     
         return $buttons;
     }

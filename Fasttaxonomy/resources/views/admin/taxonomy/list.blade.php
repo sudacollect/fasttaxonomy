@@ -59,6 +59,7 @@
                               </td>
                               <td>
                                 {{ $item->taxonomy }}
+                                <span class="badge bg-secondary">{{ $item->count }}</span>
                               </td>
                               <td>
                                 <a href="{{ admin_ext_url('fasttaxonomy/taxonomy/'.$item->taxonomy.'/terms') }}" class="btn btn-light btn-xs" title="管理分类" data-toggle="tooltip" data-placement="top">管理分类</a>

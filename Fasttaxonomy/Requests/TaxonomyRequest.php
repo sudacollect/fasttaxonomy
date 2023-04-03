@@ -28,7 +28,7 @@ class TaxonomyRequest extends FormRequest
             'taxonomy'=>'required|regex:/^[a-z_]+$/u|min:2|max:255',
             'taxonomy_title'=>'required',
             'name'=>'required',
-            'slug'=>'required|regex:/^[a-z_]+$/u',
+            // 'slug'=>'required|regex:/^[a-z_]+$/u',
         ];
     }
 
@@ -39,8 +39,8 @@ class TaxonomyRequest extends FormRequest
             'taxonomy.regex'=>'类型标识支持英文字母和下划线',
             // 'taxonomy.unique'=>'类型标识重复',
             'taxonomy_title.required'=>'请输入类型名称',
-            'slug.required'=>'请输入分类标识',
-            'slug.regex'=>'分类标识支持英文字母和下划线',
+            // 'slug.required'=>'请输入分类标识',
+            // 'slug.regex'=>'分类标识支持英文字母和下划线',
             // 'slug.unique'=>'f嗯累标识重复',
             'name.required'=>'请输入分类名称',
         ];

@@ -13,7 +13,6 @@
 return [
     
     'taxonomy_menu'=>[
-        'single'    => false,
         'title'     => '管理',
         'slug'      => 'taxonomy_menu',
         'url'       => 'index',
@@ -23,10 +22,26 @@ return [
         'group'     => 'taxonomy_menu',
         'target'     => '_self',
         'order'     => 0,
+        'children'  => [
+            [
+                'title'     => '分类列表',
+                'slug'      => 'index',
+                'url'       => 'index',
+                'icon_class'=> 'ion-apps',
+                'target'     => '_self',
+                'order'     => 0,
+                'methods'   => [
+                    'create' => '创建',
+                    'update' => '编辑',
+                    'read'   => '读取',
+                    'delete' => '删除',
+                ],
+            ]
+        ]
+        
     ],
 
     'help_menu'=>[
-        'single'    => false,
         'title'     => '帮助',
         'slug'      => 'help_menu',
         'url'       => 'help',

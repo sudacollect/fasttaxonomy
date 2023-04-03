@@ -14,6 +14,7 @@ Route::group([
     Route::get('taxonomy/edit/{id}', $controller_prefix.'HomeController@showEditForm');
 
     Route::post('taxonomy/save', $controller_prefix.'HomeController@save');
+
     Route::post('taxonomy/delete/{id}', $controller_prefix.'HomeController@delete');
 
 

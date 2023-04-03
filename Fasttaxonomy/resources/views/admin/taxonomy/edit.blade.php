@@ -5,6 +5,7 @@
 <form class="handle-ajaxform" role="form" method="POST" action="{{ admin_ext_url('fasttaxonomy/taxonomy/save') }}">
     @csrf
     <input type="hidden" name="id" value="{{ $data->id }}">
+    
     <div class="modal-body">
         
         <div class="container-fluid">

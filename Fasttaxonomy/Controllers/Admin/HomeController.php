@@ -12,6 +12,7 @@ use Gtd\Suda\Models\Setting;
 use Gtd\Suda\Models\Taxonomy;
 use Gtd\Suda\Models\Term;
 use App\Extensions\Fasttaxonomy\Requests\TaxonomyRequest;
+use App\Extensions\Fasttaxonomy\Requests\TagRequest;
 
 class HomeController extends AdminController{
     
@@ -29,15 +30,14 @@ class HomeController extends AdminController{
 
         $page_no = $request->page?$request->page:1;
         $page_size = 20;
-
-
-
-        $taxonomies = DB::table('Taxonomies')->select(DB::raw('`id`,`taxonomy`,`taxonomy_title`,`desc`,count(`taxonomy`) as count,`created_at`,`updated_at`'))
-            ->where([])
-            ->orderBy('created_at','desc')
+        
+        $taxonomies = DB::table('Taxonomies')->select(DB::raw('ANY_VALUE(`id`) as id,`taxonomy`,ANY_VALUE(`taxonomy_title`) as taxonomy_title,count(`taxonomy`) as count,ANY_VALUE(`updated_at`) as updated_at'))
+            // ->where([])
+            ->orderBy('updated_at','desc')
             ->groupBy('taxonomy')
             ->paginate($page_size,['*'],'page',$page_no);
-
+            
+        
         $this->setData('data_list',$taxonomies);
 
         return $this->display('taxonomy.list');
@@ -45,16 +45,20 @@ class HomeController extends AdminController{
 
     public function showAddForm(Request $request)
     {
+        $this->gate('taxonomy_menu.index.create');
+
         $this->setData('modal_title','增加类型');
         return $this->display('taxonomy.add');
     }
 
     public function showEditForm(Request $request,$id)
     {
+        $this->gate('taxonomy_menu.index.update',true);
+
         $this->setData('modal_title','编辑类型');
 
         $data = Taxonomy::where(['id'=>$id])->with('term')->first();
-        
+
         if(!$data)
         {
             return $this->responseAjax('fail','数据不存在');
@@ -121,6 +125,8 @@ class HomeController extends AdminController{
     }
     
     public function help(){
+
+        $this->gate('help_menu');
         
         $this->title('帮助');
         
