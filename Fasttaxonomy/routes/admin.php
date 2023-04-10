@@ -3,12 +3,16 @@
 $extpath = 'Fasttaxonomy';
 $controller_prefix = "\\App\\Extensions\\Fasttaxonomy\\Controllers\\Admin\\";
 
+
 Route::group([
     'as'         => 'fasttaxonomy.',
     'prefix'     => 'fasttaxonomy',
 ], function ($router) use ($extpath,$controller_prefix) {
 
     Route::get('index/{param?}', $controller_prefix.'HomeController@index');
+
+    
+
 
     Route::get('taxonomy/add', $controller_prefix.'HomeController@showAddForm');
     Route::get('taxonomy/edit/{id}', $controller_prefix.'HomeController@showEditForm');
