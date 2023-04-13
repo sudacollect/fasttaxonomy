@@ -1,7 +1,7 @@
 <?php
 
 $extpath = 'Fasttaxonomy';
-$controller_prefix = "\\App\\Extensions\\Fasttaxonomy\\Controllers\\Admin\\";
+$controller_prefix = "\\Gtd\\Extension\\Fasttaxonomy\\Http\\Controllers\\Admin\\";
 
 
 Route::group([

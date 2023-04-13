@@ -1,10 +1,15 @@
-# extension-fasttaxonomy
-taxonomy manager extension
+# ABOUT
 
-# Install
+taxnomy namager for  suda.
 
-Download extension, copy to your project folder App/Extensions
+分类管理工具
 
-Go to extension manage page https://youradminpath/manage/extension
+after install gtdxyz/suda
 
-Click install!
+```
+composer require gtdxyz/fasttaxonomy
+```
+
+
+
+ 

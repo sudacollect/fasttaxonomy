@@ -1,18 +1,20 @@
 <?php
 
  
-namespace App\Extensions\Fasttaxonomy\Controllers\Admin;
+namespace Gtd\Extension\Fasttaxonomy\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-use App\Extensions\Fasttaxonomy\Controllers\AdminController;
 use Gtd\Suda\Models\Setting;
 use Gtd\Suda\Models\Taxonomy;
 use Gtd\Suda\Models\Term;
-use App\Extensions\Fasttaxonomy\Requests\TaxonomyRequest;
-use App\Extensions\Fasttaxonomy\Requests\TagRequest;
+
+use Gtd\Extension\Fasttaxonomy\Http\Controllers\AdminController;
+
+use Gtd\Extension\Fasttaxonomy\Requests\TaxonomyRequest;
+use Gtd\Extension\Fasttaxonomy\Requests\TagRequest;
 
 class HomeController extends AdminController{
     
@@ -40,7 +42,7 @@ class HomeController extends AdminController{
         
         $this->setData('data_list',$taxonomies);
 
-        return $this->display('taxonomy.list');
+        return $this->display('view_extension_fasttaxonomy::admin.taxonomy.list');
     }
 
     public function showAddForm(Request $request)
@@ -48,7 +50,7 @@ class HomeController extends AdminController{
         $this->gate('taxonomy_menu.index.create');
 
         $this->setData('modal_title','增加类型');
-        return $this->display('taxonomy.add');
+        return $this->display('view_extension_fasttaxonomy::admin.taxonomy.add');
     }
 
     public function showEditForm(Request $request,$id)
@@ -66,7 +68,7 @@ class HomeController extends AdminController{
 
         $this->setData('data',$data);
 
-        return $this->display('taxonomy.edit');
+        return $this->display('view_extension_fasttaxonomy::admin.taxonomy.edit');
     }
 
     public function save(TaxonomyRequest $request)
@@ -132,7 +134,7 @@ class HomeController extends AdminController{
         
         $this->setMenu('help_menu');
 
-        return $this->display('help');
+        return $this->display('view_extension_fasttaxonomy::admin.help');
     }
     
     
