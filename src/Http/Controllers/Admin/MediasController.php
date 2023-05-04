@@ -8,10 +8,10 @@
  */
  
 
-namespace App\Extensions\Fasttaxonomy\Controllers\Admin;
+namespace Gtd\Extension\Fasttaxonomy\Http\Controllers\Admin;
 
 //把这里改为自己需要使用的控制器，才能获取到$this->user;
-use App\Extensions\Fasttaxonomy\Controllers\AdminController;
+use Gtd\Extension\Fasttaxonomy\Http\Controllers\AdminController;
 
 
 use Gtd\Suda\Traits\MediaBoxTrait;

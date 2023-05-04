@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Extensions\Fasttaxonomy\Controllers;
+namespace Gtd\Extension\Fasttaxonomy\Http\Controllers;
 
 use Gtd\Suda\Http\Controllers\MobileController as MobCtl;
 

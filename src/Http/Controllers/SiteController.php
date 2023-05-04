@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Extensions\Fasttaxonomy\Controllers;
+namespace Gtd\Extension\Fasttaxonomy\Http\Controllers;
 
 use Illuminate\Http\Request;
 

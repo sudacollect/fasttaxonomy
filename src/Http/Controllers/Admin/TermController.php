@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Extensions\Fasttaxonomy\Controllers\Admin;
+namespace Gtd\Extension\Fasttaxonomy\Http\Controllers\Admin;
 
 use App;
 use Illuminate\Http\Request;
@@ -13,7 +13,7 @@ use Log;
 use Validator;
 
 
-use App\Extensions\Fasttaxonomy\Controllers\AdminController;
+use Gtd\Extension\Fasttaxonomy\Http\Controllers\AdminController;
 
 use Gtd\Suda\Models\Taxonomy;
 
