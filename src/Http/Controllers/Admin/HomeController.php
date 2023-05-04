@@ -33,7 +33,7 @@ class HomeController extends AdminController{
         $page_no = $request->page?$request->page:1;
         $page_size = 20;
         
-        $taxonomies = DB::table('Taxonomies')->select(DB::raw('ANY_VALUE(`id`) as id,`taxonomy`,ANY_VALUE(`taxonomy_title`) as taxonomy_title,count(`taxonomy`) as count,ANY_VALUE(`updated_at`) as updated_at'))
+        $taxonomies = DB::table('taxonomies')->select(DB::raw('ANY_VALUE(`id`) as id,`taxonomy`,ANY_VALUE(`taxonomy_title`) as taxonomy_title,count(`taxonomy`) as count,ANY_VALUE(`updated_at`) as updated_at'))
             // ->where([])
             ->orderBy('updated_at','desc')
             ->groupBy('taxonomy')
